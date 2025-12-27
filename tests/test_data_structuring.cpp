@@ -187,7 +187,7 @@ TEST_F(DataStructuringTest, ParsesValidPDOBuffer) {
  * @brief Test parsing with maximum possible values
  * Ensures the parser handles boundary conditions correctly
  */
-TEST(DataStructuringTest, HandlesMaximumValues) {
+TEST_F(DataStructuringTest, HandlesMaximumValues) {
     // Generate buffer with maximum values for each field
     auto max_buffer = generate_pdo_buffer(
         UINT16_MAX,                      // Maximum uint16: 65535
@@ -219,7 +219,7 @@ TEST(DataStructuringTest, HandlesMaximumValues) {
  * @brief Test parsing with minimum possible values
  * Tests negative numbers and zero values
  */
-TEST(DataStructuringTest, HandlesMinimumValues) {
+TEST_F(DataStructuringTest, HandlesMinimumValues) {
     // Generate buffer with minimum values
     auto min_buffer = generate_pdo_buffer(
         0x0000,                          // Minimum uint16: 0
@@ -249,7 +249,7 @@ TEST(DataStructuringTest, HandlesMinimumValues) {
  * @brief Test parsing with all zero values
  * Zero is often a special case that needs explicit testing
  */
-TEST(DataStructuringTest, HandlesZeroValues) {
+TEST_F(DataStructuringTest, HandlesZeroValues) {
     auto zero_buffer = generate_pdo_buffer(0, 0, 0, 0, 0, 0, 0, 0.0f);
     
     EXPECT_EQ(zero_buffer.size(), 21);
@@ -268,7 +268,7 @@ TEST(DataStructuringTest, HandlesZeroValues) {
  * @brief Test error handling for buffer that's too small
  * Real hardware might send incomplete data - parser should handle this gracefully
  */
-TEST(DataStructuringTest, HandlesInvalidBufferSize) {
+TEST_F(DataStructuringTest, HandlesInvalidBufferSize) {
     // Create a buffer that's too small
     std::vector<uint8_t> invalid_buffer = {0x01, 0x02, 0x03};  // Only 3 bytes
     
@@ -290,7 +290,7 @@ TEST(DataStructuringTest, HandlesInvalidBufferSize) {
  * @brief Test handling of corrupted or malformed data
  * In real systems, communication errors can corrupt data
  */
-TEST(DataStructuringTest, HandlesCorruptedData) {
+TEST_F(DataStructuringTest, HandlesCorruptedData) {
     // Create a buffer with correct size but potentially invalid values
     auto corrupted_buffer = generate_pdo_buffer(
         0xFFFF,        // Status word indicating fault
@@ -320,7 +320,7 @@ TEST(DataStructuringTest, HandlesCorruptedData) {
  * @brief Test with realistic values from normal operation
  * Uses values that would be seen during typical robot operation
  */
-TEST(DataStructuringTest, NormalOperationScenario) {
+TEST_F(DataStructuringTest, NormalOperationScenario) {
     // Simulate a joint at 45 degrees (assuming 10000 counts per degree)
     auto normal_buffer = generate_pdo_buffer(
         0x1237,        // Status: Operation enabled, ready
@@ -344,7 +344,7 @@ TEST(DataStructuringTest, NormalOperationScenario) {
  * @brief Test with values indicating a fault condition
  * Simulates what data looks like when a slave reports an error
  */
-TEST(DataStructuringTest, FaultConditionScenario) {
+TEST_F(DataStructuringTest, FaultConditionScenario) {
     auto fault_buffer = generate_pdo_buffer(
         0x0008,        // Status: Fault active
         0,             // Position: Unknown/zero
@@ -367,7 +367,7 @@ TEST(DataStructuringTest, FaultConditionScenario) {
  * @brief Verify that byte order (endianness) is correct
  * EtherCAT uses little-endian, so LSB comes first
  */
-TEST(DataStructuringTest, VerifiesLittleEndianByteOrder) {
+TEST_F(DataStructuringTest, VerifiesLittleEndianByteOrder) {
     // Generate buffer with known value: 0x1234
     auto buffer = generate_pdo_buffer(0x1234, 0, 0, 0, 0, 0, 0, 0.0f);
     
@@ -384,7 +384,7 @@ TEST(DataStructuringTest, VerifiesLittleEndianByteOrder) {
  * @brief Test parsing data from multiple slaves
  * In a real system, you might have multiple slaves, each with their own buffer
  */
-TEST(DataStructuringTest, HandlesMultipleSlaves) {
+TEST_F(DataStructuringTest, HandlesMultipleSlaves) {
     // Simulate 3 slaves with different data
     std::vector<std::vector<uint8_t>> slave_buffers;
     

@@ -1,7 +1,9 @@
+#pragma once //prevents multiple inclusions
+
 #include <cstdint>
 #include <vector>
 
-typedef struct SlaveRealTimeData
+struct SlaveRealTimeData
 {
     uint16_t status_word;
     int32_t actual_position;
