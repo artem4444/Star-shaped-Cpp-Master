@@ -1,7 +1,7 @@
 #include <cstdint>
 #include <vector>
 
-struct SlaveRealTimeData
+typedef struct SlaveRealTimeData
 {
     uint16_t status_word;
     int32_t actual_position;
@@ -14,4 +14,4 @@ struct SlaveRealTimeData
     uint64_t timestamp;
     uint16_t slave_position;
     bool data_valid;
-} __attribute__((packed));
+};
