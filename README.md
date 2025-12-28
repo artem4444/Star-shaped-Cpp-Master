@@ -9,7 +9,7 @@ zip; extract to User directory
 add to Path:
 ```bash
 # Replace with your actual CMake path
-$cmakePath = "C:\Users\arm1259\cmake\bin"
+$cmakePath = "\\rz-home\arm1259\Download\Apps\cmake-4.2.1-windows-x86_64\bin"
 
 # Add to user PATH
 [Environment]::SetEnvironmentVariable("Path", $env:Path + ";$cmakePath", "User")
@@ -23,6 +23,20 @@ cmake --version
 
 ### subdirectory Cmakelist: /tests/cmakelists
 we separate tests cmakelist from the main one not to compile extra files in production stage
+
+
+# CMake Generator
+
+*CMake is a "meta build system"*. It doesn't compile your code directly, but instead creates the needed files to use another more "native" build system without you having to worry about manually implementing it for each platform.
+On Unix (Linux) this tends to be a good ol' Makefile. On Windows it's usually a Visual Studio (NOT VS Code) project. On macOS, an Xcode project.
+These aren't the only options though. If you use MSYS2/MinGW you can also use Makefiles on Windows, and CMake can generate a MinGW makefile. Another popular cross platform build system it can generate for is Ninja.
+
+
+Generators create build files for different build systems; the compilers (MSVC, GCC, Clang) are used by those generators
+
+
+! check how it works in PC (stack): doesnt work in desktop
+
 
 
 # GTest
