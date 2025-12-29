@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <vector>
 
+//create one instance per Slave
 struct SlaveRealTimeData
 {
     uint16_t status_word;

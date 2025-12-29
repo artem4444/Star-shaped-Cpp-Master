@@ -1,3 +1,5 @@
+#pragma once
+
 #include "slaves_state_struct.hpp"
 #include <vector>
 
