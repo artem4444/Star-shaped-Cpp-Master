@@ -38,7 +38,7 @@ void StarManager::input_handler(uint8_t slave_id, const std::vector<uint8_t>& bu
 
 }
 
-
+//API: SlaveRealTimeData instances can be accessed by any class
 SlaveRealTimeData StarManager::getSlaveData(uint8_t slave_id) const {
 
     return slave_registry.at(slave_id);

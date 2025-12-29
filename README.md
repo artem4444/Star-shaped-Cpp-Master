@@ -55,4 +55,26 @@ Generators create build files for different build systems; the compilers (MSVC, 
 - TearDown() - fixture method called after each test
 
 
-# 
+# constructor, destructor
+You need a constructor if:
+    Members need non-default initialization (e.g., slaves_order_ must be set)
+    Members are const or references (must be initialized)
+    Members don't have default constructors
+    You need validation or setup logic
+You don't need one if:
+    All members can be default-constructed and defaults are acceptable
+    The compiler-generated default constructor is sufficient
+
+
+You need a destructor if:
+    You acquire raw resources (file descriptors, new/malloc, mmap, sockets)
+    You need explicit cleanup logic
+You don't need one if:
+    All members use RAII types (std::vector, std::map, std::string, etc.) — they clean themselves up
+    The compiler-generated destructor is sufficient
+
+
+# Class sections: API, API for derived classes, private
+Public section = API: anything public is accessible to users.
+Prefer public methods over public data: methods provide control and encapsulation.
+Private section = not API: implementation details are hidden.

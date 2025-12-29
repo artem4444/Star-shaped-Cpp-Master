@@ -24,3 +24,17 @@ target_link_libraries(test_data_structuring
 #registering with CTest for standardization, CI/CD integration
 enable_testing()
 add_test(NAME DataStructuringTests COMMAND test_data_structuring)
+
+
+
+
+# Add Star_Manager test executable
+add_executable(test_Star_Manager test_Star_Manager.cpp)
+
+target_link_libraries(test_Star_Manager
+    data_structuring_lib
+    gtest
+    gtest_main
+)
+
+add_test(NAME StarManagerTests COMMAND test_Star_Manager)

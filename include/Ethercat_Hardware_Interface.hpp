@@ -8,5 +8,5 @@ private:
     std::vector<uint8_t> slaves_order_;
 
 public:
-
+    
 };

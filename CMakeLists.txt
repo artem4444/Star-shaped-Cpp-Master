@@ -9,6 +9,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(SOURCES
     src/data_structuring.cpp
+    src/Star_Manager.cpp
 )
 
 include_directories(include)
@@ -16,6 +17,7 @@ include_directories(include)
 set(HEADERS
     include/data_structuring.hpp
     include/slaves_state_struct.hpp
+    include/Star_Manager.hpp
 )
 
 
