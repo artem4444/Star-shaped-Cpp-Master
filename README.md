@@ -35,7 +35,16 @@ These aren't the only options though. If you use MSYS2/MinGW you can also use Ma
 Generators create build files for different build systems; the compilers (MSVC, GCC, Clang) are used by those generators
 
 
-! check how it works in PC (stack): doesnt work in desktop
+### Windows 11 working CMake stack
+
+
+##### Terminal commands
+```bash
+cd build
+cmake ..
+cmake --build .
+
+```
 
 
 
@@ -54,6 +63,12 @@ Generators create build files for different build systems; the compilers (MSVC, 
 - SetUp() - fixture method called before each test
 - TearDown() - fixture method called after each test
 
+### Terminal commands to run tests
+```bash
+cd build
+ctest --verbose
+
+```
 
 # constructor, destructor
 You need a constructor if:
